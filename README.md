@@ -1,35 +1,36 @@
 # Oauth2Dingtalk
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/oauth2_dingtalk`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
-
-## Installation
-
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'oauth2_dingtalk'
-```
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install oauth2_dingtalk
+该 Gem 的主要是使用钉钉扫码登录 Gitlab。
 
 ## Usage
 
-TODO: Write usage instructions here
+1. 和其他的 Oauth2 Gem 一样，在 Gemfile 里面添加：
+```
+gem 'oauth2_dingtalk'
+```
 
-## Development
+2. 然后在`config/initializers`里添加文件`dingding.rb`:
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+```ruby
+# config/initializers/dingding.rb
+  Rails.application.config.middleware.use OmniAuth::Builder do
+    provider :dingding, "Your_OAuth_App_ID", "Your_OAuth_App_Secret"
+  end
+```
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+3. 然后可以看 example 文件里面的例子，如果是在 Rails 项目里面使用的话，可以在路由那边添加：
 
-## Contributing
+```ruby
+  get '/auth/:provider/callback', 'sessions#create'
+```
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/oauth2_dingtalk.
+或者其他的方式。
+
+4. 最主要的是
+```
+  auth = request.env["omniauth.auth"]
+  auth["provider"]   # dingding
+  auth["uid"]        # 用户在当前开放应用内的唯一标识
+```
+
+可参考：http://railscasts.com/episodes/241-simple-omniauth?autoplay=true
