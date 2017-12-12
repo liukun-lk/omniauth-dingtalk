@@ -1,6 +1,6 @@
 require 'bundler'
 require 'sinatra'
-require '../lib/oauth2_dingtalk'
+require 'oauth2_dingtalk'
 
 ENV['APPID'] = "APPID"
 ENV['APPSECRET'] = "APPSECRET"
@@ -12,7 +12,7 @@ class App < Sinatra::Base
 
   get '/auth/:provider/callback' do
     content_type 'application/json'
-    MultiJson.encode(request.env)
+    puts MultiJson.encode(request.env)
   end
 
   get '/auth/failure' do

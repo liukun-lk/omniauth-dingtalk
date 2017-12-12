@@ -2,4 +2,4 @@ source :rubygems
 
 gem 'sinatra'
 gem 'multi_json'
-gem 'oauth2_dingtalk', path: '../'
+gem 'oauth2_dingtalk'
