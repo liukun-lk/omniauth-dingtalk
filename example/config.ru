@@ -2,8 +2,8 @@ require 'bundler'
 require 'sinatra'
 require 'oauth2_dingtalk'
 
-ENV['APPID'] = "APPID"
-ENV['APPSECRET'] = "APPSECRET"
+ENV['APPID'] = 'APPID'
+ENV['APPSECRET'] = 'APPSECRET'
 
 class App < Sinatra::Base
   get '/' do
@@ -21,7 +21,7 @@ class App < Sinatra::Base
   end
 end
 
-use Rack::Session::Cookie, :secret => "change_me"
+use Rack::Session::Cookie, secret: 'change_me'
 
 use OmniAuth::Builder do
   # note that the scope is different from the default

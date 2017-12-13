@@ -1,5 +1,5 @@
-source :rubygems
+source 'https://rubygems.org'
 
-gem 'sinatra'
 gem 'multi_json'
 gem 'oauth2_dingtalk'
+gem 'sinatra'
