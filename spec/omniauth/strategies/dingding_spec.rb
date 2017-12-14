@@ -42,6 +42,14 @@ describe OmniAuth::Strategies::Dingding do
       expect(subject.options.client_options.persistent_url).to eq('/sns/get_persistent_code')
     end
 
+    it 'should have correct sns token url' do
+      expect(subject.options.client_options.sns_token).to eq('/sns/get_sns_token')
+    end
+
+    it 'should have correct user info url' do
+      expect(subject.options.client_options.user_info).to eq('/sns/getuserinfo')
+    end
+
     it 'should have correct token method' do
       expect(subject.options.client_options.token_method).to eq(:get)
     end
@@ -52,8 +60,12 @@ describe OmniAuth::Strategies::Dingding do
       allow(subject).to receive(:raw_info).and_return(raw_info_hash)
     end
 
-    it 'should returns the unionid' do
-      expect(subject.info[:unionid]).to eq(raw_info_hash['unionid'])
+    it 'should returns the name' do
+      expect(subject.info[:name]).to eq('liukun')
+    end
+
+    it 'should returns the name' do
+      expect(subject.info[:ding_id]).to eq('dingId')
     end
   end
 
@@ -85,8 +97,12 @@ private
 
 def raw_info_hash
   {
-    'unionid' => 'unionid',
-    'openid' => 'openid',
-    'persistent_code' => 'persistent_code'
+    'user_info' => {
+      'maskedMobile' => '130****1234',
+      'nick' => 'liukun',
+      'openid' => 'liSii8KCxxxxx',
+      'unionid' => '7Huu46kk',
+      'dingId' => 'dingId'
+    }
   }
 end
