@@ -1,4 +1,5 @@
 [![Gem Version](https://badge.fury.io/rb/oauth2_dingtalk.svg)](https://badge.fury.io/rb/oauth2_dingtalk)
+[![Build Status](https://travis-ci.org/liukun-lk/oauth2_dingtalk.svg?branch=master)](https://travis-ci.org/liukun-lk/oauth2_dingtalk)
 
 # Omniauth DingTalk Strategies
 
