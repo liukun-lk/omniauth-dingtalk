@@ -10,17 +10,20 @@ module OmniAuth
              authorize_url: '/connect/qrconnect',
              token_url:     '/sns/gettoken',
              persistent_url: '/sns/get_persistent_code',
+             sns_token: '/sns/get_sns_token',
+             user_info: '/sns/getuserinfo',
              token_method: :get
 
       option :authorize_params, scope: 'snsapi_login'
 
       uid do
-        raw_info['openid']
+        raw_info['user_info']['unionid']
       end
 
       info do
         {
-          unionid: raw_info['unionid']
+          name: raw_info['user_info']['nick'],
+          ding_id: raw_info['user_info']['dingId']
         }
       end
 
@@ -35,11 +38,9 @@ module OmniAuth
       end
 
       def raw_info
-        @raw_info ||=
-          access_token.post(options.client_options[:persistent_url] + "?access_token=#{access_token.token}") do |req|
-            req.headers['Content-Type'] = 'application/json'
-            req.body = "{\"tmp_auth_code\":\"#{request.params['code']}\"}"
-          end.parsed
+        return persistent_code if persistent_code['errcode'] != 0
+        return sns_token if sns_token['errcode'] != 0
+        user_info
       end
 
       protected
@@ -50,6 +51,28 @@ module OmniAuth
           'appsecret' => client.secret
         }
         client.get_token(params)
+      end
+
+      def persistent_code
+        @persistent_code ||=
+          access_token.post(options.client_options.persistent_url + "?access_token=#{access_token.token}") do |req|
+            req.headers['Content-Type'] = 'application/json'
+            req.body = "{\"tmp_auth_code\":\"#{request.params['code']}\"}"
+          end.parsed
+      end
+
+      def sns_token
+        @sns_token ||=
+          access_token.post(options.client_options.sns_token + "?access_token=#{access_token.token}") do |req|
+            req.headers['Content-Type'] = 'application/json'
+            req.body = "{\"openid\":\"#{@persistent_code['openid']}\",
+                      \"persistent_code\":\"#{@persistent_code['persistent_code']}\"}"
+          end.parsed
+      end
+
+      def user_info
+        @user_info ||=
+          access_token.get(options.client_options.user_info + "?sns_token=#{@sns_token['sns_token']}").parsed
       end
     end
   end
