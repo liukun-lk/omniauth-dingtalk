@@ -1,36 +1,52 @@
-# Oauth2Dingtalk
+[![Gem Version](https://badge.fury.io/rb/oauth2_dingtalk.svg)](https://badge.fury.io/rb/oauth2_dingtalk)
 
-该 Gem 的主要是使用钉钉扫码登录 Gitlab。
+# Omniauth DingTalk Strategies
 
-## Usage
+Strategy to authenticate with DingTalk via OAuth2 in OmniAuth.
 
-1. 和其他的 Oauth2 Gem 一样，在 Gemfile 里面添加：
-```
+Get your API key at: http://open-dev.dingtalk.com/  Note the appId and the appSecret.
+
+For more details, read the DingTalk docs: https://open-doc.dingtalk.com/docs/doc.htm?spm=0.0.0.0.oVQWJc&treeId=168&articleId=104878&docType=1
+
+## Installation
+
+Add to your `Gemfile`:
+
+```ruby
 gem 'oauth2_dingtalk'
 ```
 
-2. 然后在`config/initializers`里添加文件`dingding.rb`:
+Then `bundle install`.
+
+## appId & appSecret
+
+Go to: https://open-doc.dingtalk.com/docs/doc.htm?spm=a219a.7629140.0.0.o96KrM&treeId=168&articleId=104882&docType=1
+
+## Usage
+
+Here's an example for adding the middleware to a Rails app in `config/initializers/omniauth.rb`:
 
 ```ruby
-# config/initializers/dingding.rb
-  Rails.application.config.middleware.use OmniAuth::Builder do
-    provider :dingding, "Your_OAuth_App_ID", "Your_OAuth_App_Secret"
-  end
+Rails.application.config.middleware.use OmniAuth::Builder do
+  provider :dingding, "Your_OAuth_App_ID", "Your_OAuth_App_Secret"
+end
 ```
 
-3. 然后可以看 example 文件里面的例子，如果是在 Rails 项目里面使用的话，可以在路由那边添加：
+You can now access the OmniAuth DingTalk OAuth2 URL: /auth/dingding
+
+For more examples please check out example/config.ru
+
+## Auth Hash
+
+Here's an example of an authentication hash available in the callback by accessing `request.env['omniauth.auth']`:
 
 ```ruby
-  get '/auth/:provider/callback', 'sessions#create'
+{
+  "provider": "dingding",
+  "uid": "uid",
+  "info": {
+    "name": "liukun",
+    "ding_id": "ding_id"
+  }
+}
 ```
-
-或者其他的方式。
-
-4. 最主要的是
-```
-  auth = request.env["omniauth.auth"]
-  auth["provider"]   # dingding
-  auth["uid"]        # 用户在当前开放应用内的唯一标识
-```
-
-可参考：http://railscasts.com/episodes/241-simple-omniauth?autoplay=true
