@@ -44,10 +44,6 @@ Here's an example of an authentication hash available in the callback by accessi
 ```ruby
 {
   "provider": "dingding",
-  "uid": "uid",
-  "info": {
-    "name": "liukun",
-    "ding_id": "ding_id"
-  }
+  "uid": "uid" # this is openid in DingTalk
 }
 ```
