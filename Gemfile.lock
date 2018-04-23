@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    oauth2_dingtalk (0.2.0)
+    oauth2_dingtalk (0.2.1)
       omniauth (~> 1.0)
       omniauth-oauth2 (~> 1.0)
 
