@@ -80,9 +80,9 @@ module OmniAuth
       end
 
       def scan_code_or_account_verify(url)
-        url.sub!('/:placeholder', 
-          UserAgent.parse(request.env['HTTP_USER_AGENT']).mobile? ? 
-            options.client_options.account_authorize_url : options.client_options.scan_code_authorize_url)
+        url.sub!('/:placeholder',
+                 UserAgent.parse(request.env['HTTP_USER_AGENT']).mobile? ?
+                   options.client_options.account_authorize_url : options.client_options.scan_code_authorize_url)
       end
     end
   end

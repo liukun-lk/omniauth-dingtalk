@@ -4,3 +4,5 @@ Documentation:
   Enabled: false
 Metrics/BlockLength:
   Enabled: false
+Style/MultilineTernaryOperator:
+  Enabled: false
