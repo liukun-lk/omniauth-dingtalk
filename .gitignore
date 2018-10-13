@@ -11,3 +11,6 @@
 .rspec_status
 /example/.bundle/*
 /example/Gemfile.lock
+
+# rbenv
+.ruby-version

@@ -1,6 +1,6 @@
 require 'bundler'
 require 'sinatra'
-require 'oauth2_dingtalk'
+require '../lib/oauth2_dingtalk'
 
 ENV['APPID'] = 'APPID'
 ENV['APPSECRET'] = 'APPSECRET'
