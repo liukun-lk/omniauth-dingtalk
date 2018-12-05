@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    oauth2_dingtalk (0.2.2)
+    oauth2_dingtalk (0.2.3)
       omniauth (~> 1.0)
       omniauth-oauth2 (~> 1.0)
       useragent
@@ -35,7 +35,7 @@ GEM
     parser (2.5.1.2)
       ast (~> 2.4.0)
     powerpack (0.1.2)
-    rack (2.0.5)
+    rack (2.0.6)
     rainbow (3.0.0)
     rake (10.5.0)
     rspec (3.8.0)
@@ -74,4 +74,4 @@ DEPENDENCIES
   rubocop (~> 0.55)
 
 BUNDLED WITH
-   1.16.2
+   1.16.6
