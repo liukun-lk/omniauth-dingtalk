@@ -10,8 +10,8 @@ Gem::Specification.new do |spec|
   spec.homepage      = 'https://github.com/liukun-lk/oauth2_dingtalk'
   spec.license       = 'MIT'
 
-  spec.summary       = 'Omniauth strategy for DingTalk(alibaba)'
-  spec.description   = 'Omniauth strategy for DingTalk(alibaba)'
+  spec.summary       = 'Omniauth strategy for DingTalk(Alibaba)'
+  spec.description   = 'Wrapper the DingTalk Oauth2 API'
 
   spec.files         = `git ls-files -z`.split("\x0").reject do |f|
     f.match(%r{^(test|spec|features)/})
@@ -26,5 +26,7 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency 'omniauth', '~> 1.0'
   spec.add_dependency 'omniauth-oauth2', '~> 1.0'
-  spec.add_dependency 'useragent'
+  spec.add_dependency 'useragent', '~> 0.16'
+
+  spec.add_runtime_dependency 'zeitwerk', '~> 1.3'
 end
