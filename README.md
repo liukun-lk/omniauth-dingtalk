@@ -9,6 +9,10 @@ Get your API key at: http://open-dev.dingtalk.com/  Note the appId and the appSe
 
 For more details, read the DingTalk docs: https://open-doc.dingtalk.com/docs/doc.htm?spm=0.0.0.0.oVQWJc&treeId=168&articleId=104878&docType=1
 
+## Resolving-CVE-2015-9284
+
+Go to: https://github.com/omniauth/omniauth/wiki/Resolving-CVE-2015-9284
+
 ## Installation
 
 Add to your `Gemfile`:
