@@ -1,5 +1,5 @@
-[![Gem Version](https://badge.fury.io/rb/oauth2_dingtalk.svg)](https://badge.fury.io/rb/oauth2_dingtalk)
-[![Build Status](https://travis-ci.org/liukun-lk/oauth2_dingtalk.svg?branch=master)](https://travis-ci.org/liukun-lk/oauth2_dingtalk)
+[![Gem Version](https://badge.fury.io/rb/omniauth-dingtalk.svg)](https://badge.fury.io/rb/omniauth-dingtalk)
+[![Build Status](https://travis-ci.org/liukun-lk/omniauth-dingtalk.svg?branch=master)](https://travis-ci.org/liukun-lk/omniauth-dingtalk)
 
 # Omniauth DingTalk Strategies
 
@@ -18,7 +18,7 @@ Go to: https://github.com/omniauth/omniauth/wiki/Resolving-CVE-2015-9284
 Add to your `Gemfile`:
 
 ```ruby
-gem 'oauth2_dingtalk'
+gem 'omniauth-dingtalk'
 ```
 
 Then `bundle install`.
@@ -33,11 +33,11 @@ Here's an example for adding the middleware to a Rails app in `config/initialize
 
 ```ruby
 Rails.application.config.middleware.use OmniAuth::Builder do
-  provider :dingding, "Your_OAuth_App_ID", "Your_OAuth_App_Secret"
+  provider :dingtalk, "Your_OAuth_App_ID", "Your_OAuth_App_Secret"
 end
 ```
 
-You can now access the OmniAuth DingTalk OAuth2 URL: /auth/dingding
+You can now access the OmniAuth DingTalk OAuth2 URL: /auth/dingtalk
 
 For more examples please check out example/config.ru
 
@@ -47,7 +47,7 @@ Here's an example of an authentication hash available in the callback by accessi
 
 ```ruby
 {
-  "provider": "dingding",
+  "provider": "dingtalk",
   "uid": "uid" # this is openid in DingTalk
 }
 ```

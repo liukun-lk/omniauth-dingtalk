@@ -1,12 +1,12 @@
 require 'spec_helper'
 
-describe OmniAuth::Strategies::Dingding do
+describe OmniAuth::Strategies::Dingtalk do
   let(:client) { OAuth2::Client.new('appid', 'appsecret') }
   let(:app) { -> { [200, {}, ['Hello.']] } }
   let(:request) { double('Request', params: {}, cookies: {}, env: {}) }
 
   subject do
-    OmniAuth::Strategies::Dingding.new(app, 'appid', 'secret', @options || {}).tap do |strategy|
+    OmniAuth::Strategies::Dingtalks.new(app, 'appid', 'secret', @options || {}).tap do |strategy|
       allow(strategy).to receive(:request) {
         request
       }
@@ -23,7 +23,7 @@ describe OmniAuth::Strategies::Dingding do
 
   describe 'client options' do
     it 'should have correct name' do
-      expect(subject.options.name).to eq('dingding')
+      expect(subject.options.name).to eq('dingtalk')
     end
 
     it 'should have correct site' do

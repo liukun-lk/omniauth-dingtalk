@@ -1,13 +1,15 @@
 require 'bundler'
 require 'sinatra'
-require 'oauth2_dingtalk'
+require 'omniauth'
+require_relative '../lib/omniauth_dingtalk'
+
 
 ENV['APPID'] = 'APPID'
 ENV['APPSECRET'] = 'APPSECRET'
 
 class App < Sinatra::Base
   get '/' do
-    redirect '/auth/dingding'
+    redirect '/auth/dingtalk'
   end
 
   get '/auth/:provider/callback' do
@@ -27,7 +29,7 @@ use OmniAuth::Builder do
   # note that the scope is different from the default
   # we also have to repeat the default fields in order to get
   # the extra 'connections' field in there
-  provider :dingding, ENV['APPID'], ENV['APPSECRET']
+  provider :dingtalk, ENV['APPID'], ENV['APPSECRET']
 end
 
 run App.new

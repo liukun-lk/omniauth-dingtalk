@@ -3,8 +3,8 @@ require 'useragent'
 
 module OmniAuth
   module Strategies
-    class Dingding < OmniAuth::Strategies::OAuth2
-      option :name, 'dingding'
+    class Dingtalk < OmniAuth::Strategies::OAuth2
+      option :name, 'dingtalk'
 
       option :client_options,
              site:          'https://oapi.dingtalk.com',

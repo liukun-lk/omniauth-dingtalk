@@ -1,5 +1,8 @@
+
+# frozen_string_literal: true
+
 source 'https://rubygems.org'
 
 gem 'multi_json'
-gem 'oauth2_dingtalk'
+gem 'omniauth-dingtalk'
 gem 'sinatra'
