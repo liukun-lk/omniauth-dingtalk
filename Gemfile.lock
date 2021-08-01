@@ -5,7 +5,7 @@ PATH
       omniauth (~> 2.0)
       omniauth-oauth2 (~> 1.7.1)
       useragent (~> 0.16)
-      zeitwerk (~> 1.3)
+      zeitwerk (>= 1.3)
 
 GEM
   remote: https://rubygems.org/
@@ -76,6 +76,7 @@ GEM
     zeitwerk (1.4.3)
 
 PLATFORMS
+  ruby
   x86_64-darwin-18
 
 DEPENDENCIES

@@ -27,5 +27,5 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'omniauth-oauth2', '~> 1.7.1'
   spec.add_dependency 'useragent', '~> 0.16'
 
-  spec.add_runtime_dependency 'zeitwerk', '~> 1.3'
+  spec.add_runtime_dependency 'zeitwerk', '>= 1.3'
 end
