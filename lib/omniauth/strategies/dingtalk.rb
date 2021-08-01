@@ -1,6 +1,3 @@
-require 'omniauth-oauth2'
-require 'useragent'
-
 module OmniAuth
   module Strategies
     class Dingtalk < OmniAuth::Strategies::OAuth2
